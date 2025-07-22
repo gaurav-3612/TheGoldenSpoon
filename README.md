@@ -1,7 +1,4 @@
 # My Restaurant Website
-
-![Home Page Screenshot](link-to-your-home-page-screenshot.png)
-
 A modern and responsive single-page application for a restaurant, allowing users to browse the menu, learn about the restaurant, and find contact information.
 
 ## Features
@@ -34,39 +31,3 @@ This project is built using the following key technologies:
 * `@testing-library/react`
 * `@testing-library/user-event`
 * `web-vitals`
-
-
-## Project Structure
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── Footer.js
-│   │   ├── Header.js
-│   │   └── Layout/Layout.js
-│   ├── data/
-│   │   └── data.js
-│   ├── images/
-│   │   ├── banner.jpeg
-│   │   ├── chhola.jpg
-│   │   ├── dosa.jpg
-│   │   ├── gujrati.jpeg
-│   │   ├── idli.jpg
-│   │   ├── masala.jpg
-│   │   └── paneer.jpg
-│   ├── pages/
-│   │   ├── About.js
-│   │   ├── Contact.js
-│   │   ├── Home.js
-│   │   ├── Menu.js
-│   │   └── Pagenotfound.js
-│   ├── styles/
-│   │   ├── HeaderStyles.css
-│   │   └── HomeStyles.css
-│   ├── App.js
-│   ├── index.css
-│   └── index.js
-├── .gitignore
-├── package.json
-├── README.md
-└── yarn.lock (or package-lock.json)
-
