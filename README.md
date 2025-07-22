@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# My Restaurant Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Home Page Screenshot](link-to-your-home-page-screenshot.png)
 
-## Available Scripts
+A modern and responsive single-page application for a restaurant, allowing users to browse the menu, learn about the restaurant, and find contact information.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* **Homepage:** Welcoming banner with a call to action to order now.
+* **Dynamic Menu:** Browse a variety of dishes with descriptions and prices.
+* **About Us Page:** Provides information about the restaurant.
+* **Contact Information:** Displays contact details including toll-free number, email, and a standard phone number.
+* **Responsive Design:** Adapts to different screen sizes (desktop and mobile).
+* **Navigation:** Easy navigation between different sections of the website.
+* **Error Handling:** A dedicated page for routes that don't exist.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is built using the following key technologies:
 
-### `npm test`
+* **React.js**: A JavaScript library for building user interfaces.
+* **Material-UI (MUI)**: A popular React UI framework for fast and easy web development.
+    * `@emotion/react`
+    * `@emotion/styled`
+    * `@mui/icons-material`
+    * `@mui/material`
+* **React Router DOM**: For declarative routing in React applications.
+* **CSS**: For styling and responsive design.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Development Dependencies:**
 
-### `npm run build`
+* `react-scripts`
+* `@testing-library/jest-dom`
+* `@testing-library/react`
+* `@testing-library/user-event`
+* `web-vitals`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   └── Layout/Layout.js
+│   ├── data/
+│   │   └── data.js
+│   ├── images/
+│   │   ├── banner.jpeg
+│   │   ├── chhola.jpg
+│   │   ├── dosa.jpg
+│   │   ├── gujrati.jpeg
+│   │   ├── idli.jpg
+│   │   ├── masala.jpg
+│   │   └── paneer.jpg
+│   ├── pages/
+│   │   ├── About.js
+│   │   ├── Contact.js
+│   │   ├── Home.js
+│   │   ├── Menu.js
+│   │   └── Pagenotfound.js
+│   ├── styles/
+│   │   ├── HeaderStyles.css
+│   │   └── HomeStyles.css
+│   ├── App.js
+│   ├── index.css
+│   └── index.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock (or package-lock.json)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
