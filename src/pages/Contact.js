@@ -1,72 +1,119 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./../components/Layout/Layout";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import MailIcon from "@mui/icons-material/Mail";
-import CallIcon from "@mui/icons-material/Call";
 import {
   Box,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Typography,
+  TextField,
+  Button,
+  Alert,
 } from "@mui/material";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      ...formData,
+      // IMPORTANT: REPLACE WITH THE KEY YOU GOT IN YOUR EMAIL
+      access_key: "773c2459-8214-4385-b95d-8437a1c86d36",
+    };
+
+    setResponseMessage("Sending...");
+    setIsError(false);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((res) => res.json());
+
+      if (res.success) {
+        setResponseMessage("Thank you! Your message has been sent.");
+        setFormData({ name: "", email: "", message: "" }); // Clear the form
+      } else {
+        setIsError(true);
+        setResponseMessage(res.message || "An error occurred.");
+      }
+    } catch (error) {
+      setIsError(true);
+      setResponseMessage("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <Layout>
-      <Box sx={{ my: 5, ml: 10, "& h4": { fontWeight: "bold", mb: 2 } }}>
-        <Typography variant="h4">Contact My Resturant</Typography>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio
-          beatae ducimus magni nobis culpa praesentium velit expedita quae,
-          corrupti, pariatur inventore laboriosam consectetur modi impedit
-          error, repudiandae obcaecati doloribus.
-        </p>
-      </Box>
       <Box
         sx={{
-          m: 3,
-          width: "600px",
-          ml: 10,
-          "@media (max-width:600px)": {
-            width: "300px",
-          },
+          my: 5,
+          mx: "auto",
+          width: { xs: "90%", sm: "70%", md: "50%" },
+          "& h4": { fontWeight: "bold", mb: 2, textAlign: "center" },
         }}>
-        <TableContainer component={Paper}>
-          <Table aria-label="contact table">
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  sx={{ bgcolor: "black", color: "white" }}
-                  align="center">
-                  Contact Details
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>
-                  <SupportAgentIcon sx={{ color: "red", pt: 1 }} /> 1800-00-0000
-                  (tollfree)
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <MailIcon sx={{ color: "skyblue", pt: 1 }} /> help@myrest.com
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <CallIcon sx={{ color: "green", pt: 1 }} /> 1234567890
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Typography variant="h4">Contact Us</Typography>
+        <Paper component="form" onSubmit={handleSubmit} sx={{ p: 4, mt: 2 }}>
+          <TextField
+            required
+            fullWidth
+            label="Your Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            margin="normal"
+          />
+          <TextField
+            required
+            fullWidth
+            type="email"
+            label="Your Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            margin="normal"
+          />
+          <TextField
+            required
+            fullWidth
+            multiline
+            rows={4}
+            label="Your Message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            margin="normal"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              mt: 2,
+              bgcolor: "black",
+              "&:hover": { bgcolor: "goldenrod" },
+            }}>
+            Send Message
+          </Button>
+          {responseMessage && (
+            <Alert severity={isError ? "error" : "success"} sx={{ mt: 3 }}>
+              {responseMessage}
+            </Alert>
+          )}
+        </Paper>
       </Box>
     </Layout>
   );
